@@ -265,29 +265,27 @@ export default function AdminDashboard() {
                 </button>
               </div>
 
-              {selectedRequest.status === "approved" && (
-                <div className={styles.accessLinkSection}>
-                  <button
-                    className={`${styles.actionBtn} ${styles.sendLinkBtn}`}
-                    onClick={async () => {
-                      setProcessing(true);
-                      const result = await sendAccessLink(selectedRequest.email);
-                      if (result.success) {
-                        setJobStatus?.(`Access link sent to ${selectedRequest.email}`);
-                      } else {
-                        setJobStatus?.(`Failed: ${result.error}`);
-                      }
-                      setProcessing(false);
-                    }}
-                    disabled={processing}
-                  >
-                    Send Access Link
-                  </button>
-                  <p className={styles.accessLinkNote}>
-                    Send magic link email to grant access
-                  </p>
-                </div>
-              )}
+              <div className={styles.accessLinkSection}>
+                <button
+                  className={`${styles.actionBtn} ${styles.sendLinkBtn}`}
+                  onClick={async () => {
+                    setProcessing(true);
+                    const result = await sendAccessLink(selectedRequest.email);
+                    if (result.success) {
+                      setJobStatus(`Access link sent to ${selectedRequest.email}`);
+                    } else {
+                      setJobStatus(`Failed: ${result.error}`);
+                    }
+                    setProcessing(false);
+                  }}
+                  disabled={processing}
+                >
+                  Send Access Link
+                </button>
+                <p className={styles.accessLinkNote}>
+                  Send magic link email to {selectedRequest.email}
+                </p>
+              </div>
             </>
           ) : (
             <div className={styles.noSelection}>
