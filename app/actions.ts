@@ -1,7 +1,11 @@
 "use server";
 
+import { createClient } from "@supabase/supabase-js";
+
 const SUPABASE_URL = "https://xshyzyewarjrpabwpdpc.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhzaHl6eWV3YXJqcnBhYndwZHBjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcwOTMzMzEsImV4cCI6MjA4MjY2OTMzMX0.crVI9qCslguwIp40sbbwxvelPUz3TTuPmcmy4crSvhI";
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 export async function submitInviteRequest(formData: FormData) {
   const email = formData.get("email") as string;
@@ -12,26 +16,18 @@ export async function submitInviteRequest(formData: FormData) {
   }
 
   try {
-    const response = await fetch(`${SUPABASE_URL}/rest/v1/invite_requests`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "apikey": SUPABASE_ANON_KEY,
-        "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
-        "Prefer": "return=minimal",
-        "Accept-Profile": "microfounders",
-        "Content-Profile": "microfounders",
-      },
-      body: JSON.stringify({
+    const { data, error } = await supabase
+      .from("mf_invite_requests")
+      .insert({
         email: email.toLowerCase().trim(),
         what_building: whatBuilding?.trim() || null,
-      }),
-    });
+      });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error("Supabase REST error:", response.status, errorText);
-      if (response.status === 409 || errorText.includes("23505")) {
+    console.log("Supabase result:", { data, error });
+
+    if (error) {
+      console.error("Supabase error:", error);
+      if (error.code === "23505") {
         return { success: true, message: "You're already on the list." };
       }
       return { success: false, error: "Something went wrong. Try again." };
