@@ -5,7 +5,7 @@ import InviteForm from "./components/InviteForm";
 import { useParallax } from "./components/useParallax";
 
 export default function ReceivingChamber() {
-  const parallax = useParallax(14);
+  const parallax = useParallax(14, 22);
 
   return (
     <main className={styles.chamber}>

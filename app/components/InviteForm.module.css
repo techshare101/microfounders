@@ -91,3 +91,25 @@
   margin: 0;
   font-weight: 300;
 }
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .form {
+    max-width: 100%;
+    gap: 1rem;
+  }
+
+  .button {
+    padding: 0.75rem 2rem;
+    font-size: 0.875rem;
+    width: 100%;
+  }
+
+  .successMessage {
+    font-size: 1rem;
+  }
+
+  .successNote {
+    font-size: 0.8rem;
+  }
+}

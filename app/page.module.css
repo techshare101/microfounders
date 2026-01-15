@@ -180,40 +180,131 @@
   letter-spacing: 0.02em;
 }
 
-@media (max-width: 480px) {
+/* Tablet breakpoint */
+@media (max-width: 768px) {
   .hero {
-    padding: 4rem 1.25rem 3rem;
-  }
-
-  .monogram {
-    margin-bottom: 2rem;
+    padding: 5rem 1.5rem 3.5rem;
   }
 
   .heroTitle {
-    font-size: 2rem;
+    font-size: 2.25rem;
   }
 
   .tagline {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
   }
 
   .goldDivider {
+    width: 70px;
+    margin-top: 2.5rem;
+  }
+
+  .section {
+    margin-bottom: 3rem;
+  }
+
+  .ctaSection {
+    padding: 3rem 1.5rem 2rem;
+    margin-top: 3rem;
+  }
+}
+
+/* Mobile breakpoint */
+@media (max-width: 480px) {
+  .hero {
+    padding: 4rem 1.25rem 2.5rem;
+  }
+
+  .monogram {
+    margin-bottom: 1.75rem;
+  }
+
+  .monogram img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .heroTitle {
+    font-size: 1.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  .tagline {
+    font-size: 1rem;
+  }
+
+  .goldDivider {
+    width: 60px;
     margin-top: 2rem;
   }
 
   .intentSection {
-    padding: 0 1.25rem 3rem;
+    padding: 0 1.25rem 2.5rem;
+  }
+
+  .contrast {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+  }
+
+  .promise {
+    font-size: 0.95rem;
   }
 
   .contentSections {
     padding: 0 1.25rem;
   }
 
+  .section {
+    margin-bottom: 2.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .section p {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .list {
+    margin: 1rem 0;
+    padding-left: 1.1rem;
+  }
+
+  .list li {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .closing {
+    margin-top: 1.25rem;
+    font-size: 0.95rem;
+  }
+
   .ctaSection {
-    padding: 2.5rem 1.25rem 1.5rem;
+    padding: 2rem 1.25rem 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .ctaTitle {
+    font-size: 1.1rem;
+  }
+
+  .ctaText {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
   }
 
   .footer {
-    padding: 2rem 1.25rem 3rem;
+    padding: 2rem 1.25rem 2.5rem;
+    margin-top: 2rem;
+  }
+
+  .footerText {
+    font-size: 0.75rem;
   }
 }
