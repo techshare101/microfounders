@@ -36,6 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <div className="mf-vignette" aria-hidden="true" />
         {children}
         <Analytics />
       </body>

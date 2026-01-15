@@ -24,8 +24,8 @@ export default function ReceivingChamber() {
           />
         </div>
 
-        <h1 className={styles.heroTitle}>MicroFounder Network</h1>
-        <p className={styles.tagline}>A private lounge for people who build.</p>
+        <h1 className={`${styles.heroTitle} mf-hero-text`}>MicroFounder Network</h1>
+        <p className={`${styles.tagline} mf-hero-text`}>A private lounge for people who build.</p>
 
         <div className={styles.goldDivider} />
       </section>
@@ -45,7 +45,7 @@ export default function ReceivingChamber() {
 
       {/* CONTENT SECTIONS */}
       <div className={styles.contentSections}>
-        <section className={styles.section}>
+        <section className={`${styles.section} mf-section`} style={{ animationDelay: "0.2s" }}>
           <h2 className={styles.sectionTitle}>What this is</h2>
           <p>
             MicroFounder Network is a quiet, curated home for builders working on
@@ -62,7 +62,7 @@ export default function ReceivingChamber() {
           </p>
         </section>
 
-        <section className={styles.section}>
+        <section className={`${styles.section} mf-section`} style={{ animationDelay: "0.4s" }}>
           <h2 className={styles.sectionTitle}>Who it's for</h2>
           <ul className={styles.list}>
             <li>Independent builders</li>
@@ -75,7 +75,7 @@ export default function ReceivingChamber() {
           </p>
         </section>
 
-        <section className={styles.section}>
+        <section className={`${styles.section} mf-section`} style={{ animationDelay: "0.6s" }}>
           <h2 className={styles.sectionTitle}>How it works</h2>
           <p>Access is limited by design.</p>
           <p className={styles.listProse}>
@@ -92,23 +92,29 @@ export default function ReceivingChamber() {
           <h2 className={styles.testimonialsTitle}>Voices from inside</h2>
 
           <div className={styles.testimonialsGrid}>
-            <div className={styles.testimonialCard}>
+            <div className={`${styles.testimonialCard} mf-testi`}>
               <p className={styles.testimonialQuote}>
-                "Being around people who build quietly has changed what I expect from community."
+                <span className="mf-quote-mark">"</span>
+                Being around people who build quietly has changed what I expect from community.
+                <span className="mf-quote-mark">"</span>
               </p>
               <p className={styles.testimonialAuthor}>— Founder, Early Member</p>
             </div>
 
-            <div className={styles.testimonialCard}>
+            <div className={`${styles.testimonialCard} mf-testi`}>
               <p className={styles.testimonialQuote}>
-                "No noise. No posturing. Just real progress — and people who actually care about their craft."
+                <span className="mf-quote-mark">"</span>
+                No noise. No posturing. Just real progress — and people who actually care about their craft.
+                <span className="mf-quote-mark">"</span>
               </p>
               <p className={styles.testimonialAuthor}>— Builder in Residence</p>
             </div>
 
-            <div className={`${styles.testimonialCard} ${styles.testimonialCardWide}`}>
+            <div className={`${styles.testimonialCard} ${styles.testimonialCardWide} mf-testi`}>
               <p className={styles.testimonialQuote}>
-                "Finally… a place that feels like home for the way I work. It's quiet, and that's the magic."
+                <span className="mf-quote-mark">"</span>
+                Finally… a place that feels like home for the way I work. It's quiet, and that's the magic.
+                <span className="mf-quote-mark">"</span>
               </p>
               <p className={styles.testimonialAuthor}>— MicroFounder</p>
             </div>
