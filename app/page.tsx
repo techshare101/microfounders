@@ -1,4 +1,5 @@
 import styles from "./page.module.css";
+import InviteForm from "./components/InviteForm";
 
 export default function Home() {
   return (
@@ -62,7 +63,8 @@ export default function Home() {
           <li>Builders who care about craft, not clout</li>
         </ul>
         <p className={styles.closing}>
-          If you're building something real — even quietly — you belong here.
+          If you're building something real — even quietly —<br />
+          you belong here.
         </p>
       </section>
 
@@ -80,16 +82,10 @@ export default function Home() {
         </p>
       </section>
 
-      <section className={styles.ctaSection}>
+      <section className={styles.ctaSection} id="request">
         <h2 className={styles.ctaTitle}>Request an invite</h2>
         <p className={styles.ctaText}>If this feels like a place you'd enter quietly:</p>
-        <a href="#request" className={styles.ctaButton}>
-          Request an invite
-        </a>
-        <p className={styles.ctaNote}>
-          No timelines. No pressure.<br />
-          We'll reach out when there's room.
-        </p>
+        <InviteForm />
       </section>
 
       <footer className={styles.footer}>
