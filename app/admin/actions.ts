@@ -79,14 +79,14 @@ export async function createPassportFromInvite(inviteId: string): Promise<string
     return null;
   }
 
-  // Create the passport
+  // Create the passport with active status (approved = ready to use)
   const { data: passport, error: createError } = await supabase
     .from("mf_founder_passports")
     .insert({
       invite_request_id: inviteId,
       email: invite.email,
       current_project: invite.what_building,
-      status: "pending",
+      status: "active",
       tier: invite.tier_assigned || "member",
     })
     .select("id")
