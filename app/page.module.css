@@ -144,8 +144,33 @@
   font-weight: 300;
 }
 
+/* Invite Card Container with Spotlight */
+.inviteCardContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Gold Spotlight Effect */
+.spotlight {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: rgba(212, 167, 84, 0.1);
+  filter: blur(100px);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
 /* Graphite Wash Invite Card */
 .inviteCard {
+  position: relative;
+  z-index: 10;
   width: 100%;
   max-width: 480px;
   background: rgba(20, 20, 22, 0.88);
@@ -385,6 +410,12 @@
   .inviteCard {
     padding: 1.75rem 1.5rem;
     border-radius: 10px;
+  }
+
+  .spotlight {
+    width: 320px;
+    height: 320px;
+    filter: blur(70px);
   }
 
   .footer {

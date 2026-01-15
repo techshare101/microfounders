@@ -126,8 +126,11 @@ export default function ReceivingChamber() {
       <section className={styles.ctaSection} id="request">
         <h2 className={styles.ctaTitle}>Request an invite</h2>
         <p className={styles.ctaText}>If this feels like a place you'd enter quietly:</p>
-        <div className={styles.inviteCard}>
-          <InviteForm />
+        <div className={styles.inviteCardContainer}>
+          <div className={styles.spotlight} aria-hidden="true" />
+          <div className={styles.inviteCard}>
+            <InviteForm />
+          </div>
         </div>
         <div className={styles.goldDot} />
       </section>
