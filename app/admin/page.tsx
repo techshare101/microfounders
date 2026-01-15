@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { supabase } from "../../lib/supabase/client";
+import { isAdminEmail } from "../../lib/auth/types";
 import { getInviteRequests, updateInviteStatus, createPassportFromInvite } from "./actions";
 import type { InviteRequest, InviteStatus, MembershipTier } from "../../lib/types/passport";
 import styles from "./admin.module.css";
@@ -8,6 +10,7 @@ import styles from "./admin.module.css";
 export default function AdminDashboard() {
   const [requests, setRequests] = useState<InviteRequest[]>([]);
   const [loading, setLoading] = useState(true);
+  const [authChecked, setAuthChecked] = useState(false);
   const [filter, setFilter] = useState<InviteStatus | "all">("pending");
   const [selectedRequest, setSelectedRequest] = useState<InviteRequest | null>(null);
   const [reviewNotes, setReviewNotes] = useState("");
@@ -15,8 +18,30 @@ export default function AdminDashboard() {
   const [processing, setProcessing] = useState(false);
 
   useEffect(() => {
-    loadRequests();
-  }, [filter]);
+    checkAuth();
+  }, []);
+
+  useEffect(() => {
+    if (authChecked) {
+      loadRequests();
+    }
+  }, [filter, authChecked]);
+
+  async function checkAuth() {
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (!user?.email) {
+      window.location.href = "/login?redirect=/admin";
+      return;
+    }
+    
+    if (!isAdminEmail(user.email)) {
+      window.location.href = "/lounge";
+      return;
+    }
+    
+    setAuthChecked(true);
+  }
 
   async function loadRequests() {
     setLoading(true);

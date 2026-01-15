@@ -74,16 +74,22 @@ export default function LoungePage() {
       const { data: { user } } = await supabase.auth.getUser();
       
       if (!user?.email) {
-        setError("Not authenticated");
-        setLoading(false);
+        // Not authenticated - redirect to login
+        window.location.href = "/login?redirect=/lounge";
         return;
       }
 
       const passportData = await getPassportByEmail(user.email);
       
       if (!passportData) {
-        // No passport found - show empty state
-        setLoading(false);
+        // No passport - redirect to onboarding
+        window.location.href = "/onboarding";
+        return;
+      }
+      
+      if (passportData.passport.status !== "active") {
+        // Passport not active - redirect to onboarding
+        window.location.href = "/onboarding";
         return;
       }
 
