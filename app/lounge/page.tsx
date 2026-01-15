@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import styles from "./lounge.module.css";
+import { supabase } from "../../lib/supabase/client";
 import {
   getPassportByEmail,
   getMatchesForPassport,
@@ -60,9 +61,6 @@ export default function LoungePage() {
   const [stats, setStats] = useState<LoungeStats | null>(null);
   const [processingMatch, setProcessingMatch] = useState<string | null>(null);
 
-  // For demo purposes, using a test email - in production this would come from auth
-  const testEmail = "demo@microfounders.network";
-
   useEffect(() => {
     loadData();
   }, []);
@@ -72,7 +70,16 @@ export default function LoungePage() {
     setError(null);
 
     try {
-      const passportData = await getPassportByEmail(testEmail);
+      // Get authenticated user
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      if (!user?.email) {
+        setError("Not authenticated");
+        setLoading(false);
+        return;
+      }
+
+      const passportData = await getPassportByEmail(user.email);
       
       if (!passportData) {
         // No passport found - show empty state
