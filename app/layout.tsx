@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
+import AtmosphericParticles from "./components/AtmosphericParticles";
 
 export const metadata: Metadata = {
   title: "MicroFounder Network",
@@ -37,6 +38,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className="mf-vignette" aria-hidden="true" />
+        <AtmosphericParticles />
         {children}
         <Analytics />
       </body>
