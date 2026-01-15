@@ -1,0 +1,575 @@
+/* =========================================================
+   MICROFOUNDER NETWORK — LOUNGE UI
+   Phase 4.6: Member dashboard styles
+   ========================================================= */
+
+/* Lounge wrapper - premium dark environment */
+.loungeWrapper {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0a0a0c 0%, #0f1014 50%, #0a0a0c 100%);
+  position: relative;
+  z-index: 50;
+  isolation: isolate;
+}
+
+/* Main layout */
+.lounge {
+  display: grid;
+  grid-template-columns: 260px 1fr 320px;
+  min-height: 100vh;
+  color: #FAFAFA;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+@media (max-width: 1200px) {
+  .lounge {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   SIDEBAR NAVIGATION
+   ========================================================= */
+
+.sidebar {
+  background: rgba(255, 255, 255, 0.02);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1200px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.logoMark {
+  width: 32px;
+  height: 32px;
+  opacity: 0.9;
+}
+
+.logoText {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #FAFAFA;
+  letter-spacing: -0.02em;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 200ms ease;
+  border: none;
+  background: transparent;
+  text-align: left;
+  width: 100%;
+}
+
+.navItem:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.navItemActive {
+  background: rgba(212, 167, 84, 0.1);
+  color: #D4A754;
+}
+
+.navIcon {
+  width: 18px;
+  height: 18px;
+  opacity: 0.7;
+}
+
+.navDivider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  margin: 1rem 0;
+}
+
+.userSection {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.userCard {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 200ms ease;
+}
+
+.userCard:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.userAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #D4A754 0%, #8B7355 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0a0a0c;
+}
+
+.userName {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #FAFAFA;
+}
+
+.userStatus {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* =========================================================
+   MAIN CONTENT AREA
+   ========================================================= */
+
+.main {
+  padding: 2rem 2.5rem;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 1.5rem 1rem;
+  }
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.greeting {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #FAFAFA;
+  margin: 0 0 0.25rem;
+}
+
+.subGreeting {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+/* =========================================================
+   SECTION CARDS
+   ========================================================= */
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.sectionTitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+.sectionAction {
+  font-size: 0.75rem;
+  color: #D4A754;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.sectionAction:hover {
+  text-decoration: underline;
+}
+
+/* =========================================================
+   MATCH QUEUE
+   ========================================================= */
+
+.matchQueue {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.matchCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 1.25rem;
+  transition: all 200ms ease;
+}
+
+.matchCard:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(212, 167, 84, 0.2);
+}
+
+.matchHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.matchAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4A90A4 0%, #2D5A6B 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+}
+
+.matchInfo {
+  flex: 1;
+}
+
+.matchName {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #FAFAFA;
+  margin: 0 0 0.125rem;
+}
+
+.matchProject {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+.matchScore {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #D4A754;
+  background: rgba(212, 167, 84, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.matchReasons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.matchReason {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.matchActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.matchBtn {
+  flex: 1;
+  padding: 0.625rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.matchBtnAccept {
+  background: rgba(76, 175, 80, 0.15);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  color: #4caf50;
+}
+
+.matchBtnAccept:hover {
+  background: rgba(76, 175, 80, 0.25);
+}
+
+.matchBtnDecline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.matchBtnDecline:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* =========================================================
+   CIRCLES
+   ========================================================= */
+
+.circlesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.circleCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.circleCard:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(212, 167, 84, 0.2);
+}
+
+.circleHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.circleName {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #FAFAFA;
+  margin: 0;
+}
+
+.circleStatus {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+}
+
+.circleStatusActive {
+  background: rgba(76, 175, 80, 0.15);
+  color: #4caf50;
+}
+
+.circleStatusForming {
+  background: rgba(255, 193, 7, 0.15);
+  color: #ffc107;
+}
+
+.circleMembers {
+  display: flex;
+  align-items: center;
+  gap: -0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.circleMemberAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #0a0a0c;
+  margin-left: -8px;
+  background: linear-gradient(135deg, #6B7280 0%, #4B5563 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: white;
+}
+
+.circleMemberAvatar:first-child {
+  margin-left: 0;
+}
+
+.circleMeta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* =========================================================
+   ACTIVITY PANEL (RIGHT SIDEBAR)
+   ========================================================= */
+
+.activityPanel {
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 2rem 1.5rem;
+  overflow-y: auto;
+}
+
+@media (max-width: 1200px) {
+  .activityPanel {
+    display: none;
+  }
+}
+
+.activityHeader {
+  margin-bottom: 1.5rem;
+}
+
+.activityTitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+.activityList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.activityItem {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.activityItem:last-child {
+  border-bottom: none;
+}
+
+.activityContent {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+  margin: 0 0 0.25rem;
+}
+
+.activityTime {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* =========================================================
+   EMPTY STATES
+   ========================================================= */
+
+.emptyState {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.emptyIcon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.emptyTitle {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 0.5rem;
+}
+
+.emptyText {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
+}
+
+/* =========================================================
+   MOBILE NAVIGATION
+   ========================================================= */
+
+.mobileNav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10, 10, 12, 0.95);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0.75rem 1rem;
+  z-index: 100;
+}
+
+@media (max-width: 1200px) {
+  .mobileNav {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .main {
+    padding-bottom: 5rem;
+  }
+}
+
+.mobileNavItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mobileNavItem:hover,
+.mobileNavItemActive {
+  color: #D4A754;
+}
+
+.mobileNavIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.mobileNavLabel {
+  font-size: 0.65rem;
+  font-weight: 500;
+}
