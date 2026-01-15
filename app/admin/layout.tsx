@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AppShell } from "../../components/AppShell";
 import styles from "./admin.module.css";
 
 export const metadata: Metadata = {
@@ -13,8 +14,10 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className={styles.adminWrapper}>
-      {children}
-    </div>
+    <AppShell>
+      <div className={styles.adminWrapper}>
+        {children}
+      </div>
+    </AppShell>
   );
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AppShell } from "../../components/AppShell";
 import styles from "./lounge.module.css";
 
 export const metadata: Metadata = {
@@ -13,8 +14,10 @@ export default function LoungeLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className={styles.loungeWrapper}>
-      {children}
-    </div>
+    <AppShell>
+      <div className={styles.loungeWrapper}>
+        {children}
+      </div>
+    </AppShell>
   );
 }
