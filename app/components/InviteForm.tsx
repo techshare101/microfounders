@@ -38,7 +38,7 @@ export default function InviteForm() {
           name="email"
           placeholder="your@email.com"
           required
-          className={styles.input}
+          className="mf-input"
           disabled={status === "loading"}
         />
       </div>
@@ -47,7 +47,7 @@ export default function InviteForm() {
           name="whatBuilding"
           placeholder="What are you building? (optional)"
           rows={2}
-          className={styles.textarea}
+          className="mf-input"
           disabled={status === "loading"}
         />
       </div>
