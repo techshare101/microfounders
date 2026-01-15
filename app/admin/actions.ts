@@ -106,6 +106,33 @@ export async function createPassportFromInvite(inviteId: string): Promise<string
   return passport.id;
 }
 
+/**
+ * Send magic link access email to approved user
+ * This is the primary way users gain access to the network
+ */
+export async function sendAccessLink(email: string): Promise<{ success: boolean; error?: string }> {
+  try {
+    // Use Supabase Admin API to generate magic link
+    // Note: This requires service role key for admin operations
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: {
+        emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || "https://microfounders.network"}/auth/callback?redirect=/onboarding`,
+      },
+    });
+
+    if (error) {
+      console.error("Error sending access link:", error);
+      return { success: false, error: error.message };
+    }
+
+    return { success: true };
+  } catch (err) {
+    console.error("Error sending access link:", err);
+    return { success: false, error: "Failed to send access link" };
+  }
+}
+
 export async function getInviteStats(): Promise<{
   pending: number;
   approved: number;

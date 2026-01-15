@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabase/client";
 import { isAdminEmail } from "../../lib/auth/types";
 import { hasFounderOverride } from "../../lib/auth/founder-override";
-import { getInviteRequests, updateInviteStatus, createPassportFromInvite } from "./actions";
+import { getInviteRequests, updateInviteStatus, createPassportFromInvite, sendAccessLink } from "./actions";
 import type { InviteRequest, InviteStatus, MembershipTier } from "../../lib/types/passport";
 import styles from "./admin.module.css";
 
@@ -264,6 +264,30 @@ export default function AdminDashboard() {
                   Decline
                 </button>
               </div>
+
+              {selectedRequest.status === "approved" && (
+                <div className={styles.accessLinkSection}>
+                  <button
+                    className={`${styles.actionBtn} ${styles.sendLinkBtn}`}
+                    onClick={async () => {
+                      setProcessing(true);
+                      const result = await sendAccessLink(selectedRequest.email);
+                      if (result.success) {
+                        setJobStatus?.(`Access link sent to ${selectedRequest.email}`);
+                      } else {
+                        setJobStatus?.(`Failed: ${result.error}`);
+                      }
+                      setProcessing(false);
+                    }}
+                    disabled={processing}
+                  >
+                    Send Access Link
+                  </button>
+                  <p className={styles.accessLinkNote}>
+                    Send magic link email to grant access
+                  </p>
+                </div>
+              )}
             </>
           ) : (
             <div className={styles.noSelection}>

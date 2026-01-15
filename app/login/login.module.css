@@ -167,10 +167,12 @@
   cursor: not-allowed;
 }
 
-.switchMode {
+.accessNote {
   margin-top: 1.5rem;
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  line-height: 1.5;
 }
 
 .switchBtn {

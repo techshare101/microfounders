@@ -5,62 +5,29 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "../../lib/supabase/client";
 import styles from "./login.module.css";
 
-type AuthMode = "login" | "signup";
+/**
+ * MicroFounder Network — Magic Link Only Access
+ * 
+ * This page is intentionally minimal. Users receive access via:
+ * 1. Admin approval → magic link email
+ * 2. Direct magic link for returning members
+ * 
+ * No self-service signup. No public discovery.
+ */
 
 function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirect = searchParams.get("redirect") || "/lounge";
 
-  const [mode, setMode] = useState<AuthMode>("login");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleMagicLink(e: React.FormEvent) {
     e.preventDefault();
-    setLoading(true);
-    setError(null);
-    setMessage(null);
-
-    try {
-      if (mode === "login") {
-        const { error } = await supabase.auth.signInWithPassword({
-          email,
-          password,
-        });
-
-        if (error) {
-          setError(error.message);
-        } else {
-          router.push(redirect);
-          router.refresh();
-        }
-      } else {
-        const { error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: {
-            emailRedirectTo: `${window.location.origin}/auth/callback?redirect=${redirect}`,
-          },
-        });
-
-        if (error) {
-          setError(error.message);
-        } else {
-          setMessage("Check your email for a confirmation link.");
-        }
-      }
-    } catch (err) {
-      setError("An unexpected error occurred. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  async function handleMagicLink() {
+    
     if (!email) {
       setError("Please enter your email address.");
       return;
@@ -81,7 +48,7 @@ function LoginForm() {
       if (error) {
         setError(error.message);
       } else {
-        setMessage("Check your email for a magic link.");
+        setMessage("Check your email for an access link.");
       }
     } catch (err) {
       setError("An unexpected error occurred. Please try again.");
@@ -96,10 +63,10 @@ function LoginForm() {
         <div className={styles.logo}>◆</div>
         <h1 className={styles.title}>MicroFounder Network</h1>
         <p className={styles.subtitle}>
-          {mode === "login" ? "Welcome back" : "Join the network"}
+          Enter your email to receive an access link
         </p>
 
-        <form onSubmit={handleSubmit} className={styles.form}>
+        <form onSubmit={handleMagicLink} className={styles.form}>
           <div className={styles.field}>
             <label className={styles.label}>Email</label>
             <input
@@ -113,20 +80,6 @@ function LoginForm() {
             />
           </div>
 
-          <div className={styles.field}>
-            <label className={styles.label}>Password</label>
-            <input
-              type="password"
-              className={styles.input}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
-              required
-              minLength={6}
-              disabled={loading}
-            />
-          </div>
-
           {error && <p className={styles.error}>{error}</p>}
           {message && <p className={styles.message}>{message}</p>}
 
@@ -135,47 +88,13 @@ function LoginForm() {
             className={styles.submitBtn}
             disabled={loading}
           >
-            {loading ? "..." : mode === "login" ? "Sign In" : "Create Account"}
+            {loading ? "Sending..." : "Send Access Link"}
           </button>
         </form>
 
-        <div className={styles.divider}>
-          <span>or</span>
-        </div>
-
-        <button
-          type="button"
-          className={styles.magicBtn}
-          onClick={handleMagicLink}
-          disabled={loading}
-        >
-          Send Magic Link
-        </button>
-
-        <p className={styles.switchMode}>
-          {mode === "login" ? (
-            <>
-              Don't have an account?{" "}
-              <button
-                type="button"
-                className={styles.switchBtn}
-                onClick={() => setMode("signup")}
-              >
-                Sign up
-              </button>
-            </>
-          ) : (
-            <>
-              Already have an account?{" "}
-              <button
-                type="button"
-                className={styles.switchBtn}
-                onClick={() => setMode("login")}
-              >
-                Sign in
-              </button>
-            </>
-          )}
+        <p className={styles.accessNote}>
+          Access is by invitation only.<br />
+          If you've been approved, enter your email above.
         </p>
       </div>
     </div>

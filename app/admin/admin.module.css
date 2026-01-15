@@ -364,3 +364,28 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+/* Access Link Section */
+.accessLinkSection {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sendLinkBtn {
+  background: rgba(33, 150, 243, 0.15);
+  border-color: rgba(33, 150, 243, 0.4);
+  color: #2196f3;
+  width: 100%;
+}
+
+.sendLinkBtn:hover:not(:disabled) {
+  background: rgba(33, 150, 243, 0.25);
+}
+
+.accessLinkNote {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+}
