@@ -48,8 +48,8 @@
   font-family: inherit;
   letter-spacing: 0.02em;
   background: transparent;
-  color: var(--mf-graphite);
-  border: 1px solid var(--mf-gold);
+  color: #1B1D22;
+  border: 1px solid #D4A754;
   border-radius: 2px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -57,7 +57,7 @@
 }
 
 .button:hover:not(:disabled) {
-  background: var(--mf-gold);
+  background: #D4A754;
   color: white;
 }
 
