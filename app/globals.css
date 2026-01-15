@@ -104,3 +104,31 @@ body {
   border-bottom-color: #D4A754;
   border-bottom-width: 2px;
 }
+
+/* ---------------------------------------------------------
+   MICROFOUNDER — MONOGRAM ENTRANCE ANIMATION
+   ---------------------------------------------------------
+   A subtle fade + lift + micro-scale expansion.
+   Quiet, premium, invitation-only energy.
+   --------------------------------------------------------- */
+
+.mf-monogram-enter {
+  opacity: 0;
+  transform: translateY(6px) scale(0.98);
+  animation: mfMonogramEnter 1.1s ease-out forwards;
+}
+
+@keyframes mfMonogramEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1.00);
+  }
+}

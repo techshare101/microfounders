@@ -20,6 +20,7 @@ export default function ReceivingChamber() {
             alt="MicroFounder Network"
             width={64}
             height={64}
+            className="mf-monogram-enter"
           />
         </div>
 
