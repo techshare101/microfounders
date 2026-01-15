@@ -1,0 +1,136 @@
+.landing {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 3rem;
+}
+
+.hero {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.75rem;
+}
+
+.tagline {
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  margin: 0 0 2rem;
+}
+
+.contrast {
+  color: var(--color-text-subtle);
+  margin: 0 0 1.5rem;
+  font-size: 0.95rem;
+}
+
+.promise {
+  color: var(--color-text);
+  margin: 0;
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  letter-spacing: -0.01em;
+}
+
+.section p {
+  margin: 0 0 1rem;
+}
+
+.listProse {
+  color: var(--color-text-muted);
+}
+
+.closing {
+  margin-top: 1.5rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+.list {
+  margin: 1rem 0;
+  padding-left: 1.25rem;
+}
+
+.list li {
+  margin-bottom: 0.5rem;
+  color: var(--color-text-muted);
+}
+
+.ctaSection {
+  text-align: center;
+  padding: 3rem 0;
+  border-top: 1px solid var(--color-border);
+  margin-top: 3rem;
+}
+
+.ctaTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.ctaText {
+  margin: 0 0 1.5rem;
+  color: var(--color-text-muted);
+}
+
+.ctaButton {
+  display: inline-block;
+  padding: 0.875rem 2rem;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.ctaButton:hover {
+  opacity: 0.85;
+}
+
+.ctaNote {
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text-subtle);
+}
+
+.footer {
+  text-align: center;
+  padding-top: 3rem;
+  margin-top: 3rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.footerText {
+  font-size: 0.8rem;
+  color: var(--color-text-subtle);
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .landing {
+    padding: 2.5rem 1.25rem 2rem;
+  }
+
+  .heroTitle {
+    font-size: 1.75rem;
+  }
+
+  .tagline {
+    font-size: 1.1rem;
+  }
+}
