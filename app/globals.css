@@ -1,4 +1,5 @@
 :root {
+  /* Existing tokens */
   --color-bg: #fafafa;
   --color-text: #1a1a1a;
   --color-text-muted: #666;
@@ -7,6 +8,14 @@
   --color-border: #e5e5e5;
   --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-serif: Georgia, 'Times New Roman', serif;
+
+  /* MicroFounder Premium Brand Tokens */
+  --mf-gold: #D4A754;
+  --mf-gold-hover: #C49A4A;
+  --mf-pearl: #FAFAFA;
+  --mf-graphite: #1B1D22;
+  --mf-fog: #E3E4E6;
+  --mf-charcoal: #2C2E33;
 }
 
 * {
