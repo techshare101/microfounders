@@ -117,7 +117,7 @@ export async function sendAccessLink(email: string): Promise<{ success: boolean;
     const { error } = await supabase.auth.signInWithOtp({
       email,
       options: {
-        emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || "https://microfounders.network"}/auth/callback?redirect=/onboarding`,
+        emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || "https://microfounders.network"}/auth/callback?redirect=/lounge`,
       },
     });
 

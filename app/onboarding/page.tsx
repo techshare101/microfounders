@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabase/client";
+import { hasFounderOverride } from "../../lib/auth/founder-override";
 import styles from "./onboarding.module.css";
 
 export default function OnboardingPage() {
@@ -25,6 +26,12 @@ export default function OnboardingPage() {
     }
 
     setUserEmail(user.email || null);
+
+    // Founder override - go directly to lounge
+    if (hasFounderOverride(user.email)) {
+      router.push("/lounge");
+      return;
+    }
 
     // Check if user already has a passport
     const { data: passport } = await supabase
