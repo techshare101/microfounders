@@ -1,11 +1,19 @@
+"use client";
+
 import styles from "./page.module.css";
 import InviteForm from "./components/InviteForm";
+import { useParallax } from "./components/useParallax";
 
 export default function ReceivingChamber() {
+  const parallax = useParallax(14);
+
   return (
     <main className={styles.chamber}>
       {/* HERO */}
-      <section className={styles.hero}>
+      <section
+        className={styles.hero}
+        style={{ transform: `translateY(${parallax}px)` }}
+      >
         <div className={styles.monogram}>
           <img
             src="/brand/MF-monogram.svg"
