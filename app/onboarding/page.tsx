@@ -9,6 +9,8 @@ export default function OnboardingPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [hasPassport, setHasPassport] = useState(false);
+  const [onboardingComplete, setOnboardingComplete] = useState(false);
 
   useEffect(() => {
     checkAuth();
@@ -27,14 +29,21 @@ export default function OnboardingPage() {
     // Check if user already has a passport
     const { data: passport } = await supabase
       .from("mf_founder_passports")
-      .select("id, status")
+      .select("id, status, onboarding_completed")
       .eq("email", user.email)
       .single();
 
-    if (passport?.status === "active") {
-      // Already onboarded - go to lounge
-      router.push("/lounge");
-      return;
+    if (passport) {
+      setHasPassport(true);
+      
+      if (passport.onboarding_completed) {
+        // Fully onboarded - go to lounge
+        router.push("/lounge");
+        return;
+      }
+      
+      // Has passport but not completed onboarding - show continue button
+      setOnboardingComplete(false);
     }
 
     setLoading(false);
@@ -48,6 +57,47 @@ export default function OnboardingPage() {
     );
   }
 
+  // If user has passport, show continue onboarding
+  if (hasPassport) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.card}>
+          <div className={styles.logo}>◆</div>
+          <h1 className={styles.title}>Complete Your Profile</h1>
+          <p className={styles.subtitle}>
+            You've been approved! Let's set up your Founder Passport.
+          </p>
+
+          <div className={styles.status}>
+            <div className={styles.statusIcon}>✓</div>
+            <h2 className={styles.statusTitle} style={{ color: "#4caf50" }}>Approved</h2>
+            <p className={styles.statusText}>
+              Welcome, <strong>{userEmail}</strong>. Complete your profile to access the Lounge.
+            </p>
+          </div>
+
+          <button
+            className={styles.continueBtn}
+            onClick={() => router.push("/onboarding/stepper")}
+          >
+            Complete Profile →
+          </button>
+
+          <button
+            className={styles.signOutBtn}
+            onClick={async () => {
+              await supabase.auth.signOut();
+              router.push("/");
+            }}
+          >
+            Sign Out
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // No passport - pending review
   return (
     <div className={styles.container}>
       <div className={styles.card}>

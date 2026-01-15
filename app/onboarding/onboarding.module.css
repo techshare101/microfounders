@@ -113,6 +113,25 @@
   color: #D4A754;
 }
 
+.continueBtn {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-family: inherit;
+  background: #D4A754;
+  border: none;
+  border-radius: 8px;
+  color: #0a0a0c;
+  cursor: pointer;
+  transition: all 200ms ease;
+  margin-bottom: 1rem;
+}
+
+.continueBtn:hover {
+  background: #e0b565;
+}
+
 .signOutBtn {
   width: 100%;
   padding: 0.75rem 1.5rem;
