@@ -2,9 +2,6 @@
 
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-
 export async function submitInviteRequest(formData: FormData) {
   const email = formData.get("email") as string;
   const whatBuilding = formData.get("whatBuilding") as string;
@@ -13,10 +10,19 @@ export async function submitInviteRequest(formData: FormData) {
     return { success: false, error: "Valid email required" };
   }
 
-  const supabase = createClient(supabaseUrl, supabaseAnonKey);
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!supabaseUrl || !supabaseAnonKey) {
+    console.error("Missing Supabase env vars");
+    return { success: false, error: "Configuration error." };
+  }
+
+  const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+    db: { schema: "microfounders" }
+  });
 
   const { error } = await supabase
-    .schema("microfounders")
     .from("invite_requests")
     .insert({
       email: email.toLowerCase().trim(),
