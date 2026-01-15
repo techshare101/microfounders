@@ -25,7 +25,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: var(--color-bg);
+  background-color: #FAFAFA;
   color: var(--color-text);
   font-family: var(--font-sans);
   font-size: 17px;
@@ -34,7 +34,39 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Premium Background Texture - Pearl Fog */
+body {
+  background-image:
+    radial-gradient(
+      circle at 50% -20%,
+      rgba(0,0,0,0.05) 0%,
+      rgba(0,0,0,0.025) 20%,
+      rgba(0,0,0,0.01) 40%,
+      transparent 70%
+    ),
+    repeating-linear-gradient(
+      135deg,
+      rgba(255,255,255,0.08) 0px,
+      rgba(255,255,255,0.08) 1px,
+      rgba(0,0,0,0.015) 2px,
+      rgba(0,0,0,0.015) 3px
+    );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* Fade-in Animation */
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
 ::selection {
-  background: var(--color-text);
-  color: var(--color-bg);
+  background: #1B1D22;
+  color: #FAFAFA;
 }

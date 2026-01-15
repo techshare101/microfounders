@@ -1,7 +1,13 @@
 .chamber {
   min-height: 100vh;
-  background: var(--mf-pearl);
-  color: var(--mf-graphite);
+  background: transparent;
+  color: #1B1D22;
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
 }
 
 .hero {
