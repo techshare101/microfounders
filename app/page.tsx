@@ -87,6 +87,33 @@ export default function ReceivingChamber() {
             Not to exclude — but to protect the atmosphere.
           </p>
         </section>
+        {/* TESTIMONIALS — Quiet Founder Voices */}
+        <section className={styles.testimonialsSection}>
+          <h2 className={styles.testimonialsTitle}>Voices from inside</h2>
+
+          <div className={styles.testimonialsGrid}>
+            <div className={styles.testimonialCard}>
+              <p className={styles.testimonialQuote}>
+                "Being around people who build quietly has changed what I expect from community."
+              </p>
+              <p className={styles.testimonialAuthor}>— Founder, Early Member</p>
+            </div>
+
+            <div className={styles.testimonialCard}>
+              <p className={styles.testimonialQuote}>
+                "No noise. No posturing. Just real progress — and people who actually care about their craft."
+              </p>
+              <p className={styles.testimonialAuthor}>— Builder in Residence</p>
+            </div>
+
+            <div className={`${styles.testimonialCard} ${styles.testimonialCardWide}`}>
+              <p className={styles.testimonialQuote}>
+                "Finally… a place that feels like home for the way I work. It's quiet, and that's the magic."
+              </p>
+              <p className={styles.testimonialAuthor}>— MicroFounder</p>
+            </div>
+          </div>
+        </section>
       </div>
 
       {/* WAITLIST FORM */}
