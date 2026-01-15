@@ -180,6 +180,15 @@
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
   padding: 2.5rem 2.5rem;
   color: #FAFAFA;
+  transition: box-shadow 300ms ease, border-color 300ms ease;
+}
+
+.inviteCard:hover {
+  border-color: #D4A754;
+  box-shadow:
+    0 0 22px rgba(212, 167, 84, 0.25),
+    0 0 48px rgba(212, 167, 84, 0.15),
+    0 0 4px rgba(212, 167, 84, 0.40) inset;
 }
 
 /* Gold micro-dot divider */
