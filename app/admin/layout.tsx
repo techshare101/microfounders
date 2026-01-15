@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import styles from "./admin.module.css";
 
 export const metadata: Metadata = {
   title: "Admin | MicroFounder Network",
@@ -12,7 +13,7 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-[#0f0f11]">
+    <div className={styles.adminWrapper}>
       {children}
     </div>
   );

@@ -3,6 +3,15 @@
    Phase 4.2: Invite Review Dashboard Styles
    ========================================================= */
 
+/* Admin wrapper - isolates from global effects */
+.adminWrapper {
+  min-height: 100vh;
+  background: #0f0f11;
+  position: relative;
+  z-index: 100;
+  isolation: isolate;
+}
+
 .dashboard {
   min-height: 100vh;
   padding: 2rem;
