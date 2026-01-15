@@ -1,0 +1,311 @@
+/* =========================================================
+   MICROFOUNDER NETWORK — ADMIN DASHBOARD
+   Phase 4.2: Invite Review Dashboard Styles
+   ========================================================= */
+
+.dashboard {
+  min-height: 100vh;
+  padding: 2rem;
+  color: #FAFAFA;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+  color: #FAFAFA;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.filterBtn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.filterActive {
+  background: rgba(212, 167, 84, 0.15);
+  border-color: rgba(212, 167, 84, 0.4);
+  color: #D4A754;
+}
+
+/* Content Layout */
+.content {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Request List */
+.requestList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.loading,
+.empty {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.9rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.requestCard {
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.requestCard:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.requestSelected {
+  background: rgba(212, 167, 84, 0.08);
+  border-color: rgba(212, 167, 84, 0.3);
+}
+
+.requestHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.requestEmail {
+  font-weight: 500;
+  color: #FAFAFA;
+}
+
+.requestStatus {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.statusPending {
+  background: rgba(255, 193, 7, 0.15);
+  color: #ffc107;
+}
+
+.statusReviewing {
+  background: rgba(33, 150, 243, 0.15);
+  color: #2196f3;
+}
+
+.statusApproved {
+  background: rgba(76, 175, 80, 0.15);
+  color: #4caf50;
+}
+
+.statusDeclined {
+  background: rgba(244, 67, 54, 0.15);
+  color: #f44336;
+}
+
+.statusWaitlisted {
+  background: rgba(156, 39, 176, 0.15);
+  color: #9c27b0;
+}
+
+.requestBuilding {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 0.5rem;
+  line-height: 1.5;
+}
+
+.requestMeta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.signalScore {
+  color: #D4A754;
+}
+
+/* Review Panel */
+.reviewPanel {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 1.5rem;
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+}
+
+.panelTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem;
+  color: #FAFAFA;
+}
+
+.noSelection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.field {
+  margin-bottom: 1.25rem;
+}
+
+.label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.5rem;
+}
+
+.value {
+  font-size: 0.9rem;
+  color: #FAFAFA;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.select {
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #FAFAFA;
+  cursor: pointer;
+}
+
+.select:focus {
+  outline: none;
+  border-color: #D4A754;
+}
+
+.textarea {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #FAFAFA;
+  resize: vertical;
+}
+
+.textarea::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: #D4A754;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.actionBtn {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.actionBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.approveBtn {
+  background: rgba(76, 175, 80, 0.15);
+  border-color: rgba(76, 175, 80, 0.4);
+  color: #4caf50;
+}
+
+.approveBtn:hover:not(:disabled) {
+  background: rgba(76, 175, 80, 0.25);
+}
+
+.waitlistBtn {
+  background: rgba(156, 39, 176, 0.15);
+  border-color: rgba(156, 39, 176, 0.4);
+  color: #9c27b0;
+}
+
+.waitlistBtn:hover:not(:disabled) {
+  background: rgba(156, 39, 176, 0.25);
+}
+
+.declineBtn {
+  background: rgba(244, 67, 54, 0.15);
+  border-color: rgba(244, 67, 54, 0.4);
+  color: #f44336;
+}
+
+.declineBtn:hover:not(:disabled) {
+  background: rgba(244, 67, 54, 0.25);
+}
