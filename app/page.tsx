@@ -126,12 +126,18 @@ export default function ReceivingChamber() {
       <section className={styles.ctaSection} id="request">
         <h2 className={styles.ctaTitle}>Request an invite</h2>
         <p className={styles.ctaText}>If this feels like a place you'd enter quietly:</p>
-        <InviteForm />
+        <div className={styles.inviteCard}>
+          <InviteForm />
+        </div>
+        <div className={styles.goldDot} />
       </section>
 
       {/* FOOTER */}
       <footer className={styles.footer}>
-        <p className={styles.footerText}>Curated by MetalMindTech.</p>
+        <div className={styles.footerContent}>
+          <p className={styles.footerCopyright}>© 2026 · Curated by MetalMindTech</p>
+          <p className={styles.footerSignature}>by Kojo & Kesarel</p>
+        </div>
       </footer>
     </main>
   );

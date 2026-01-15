@@ -123,22 +123,47 @@
 
 .ctaSection {
   text-align: center;
-  padding: 3.5rem 0 2rem;
-  border-top: 1px solid var(--mf-fog);
+  padding: 4rem 1.5rem 2rem;
+  border-top: 1px solid #E3E4E6;
   margin-top: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .ctaTitle {
   font-size: 1.2rem;
   font-weight: 600;
   margin: 0 0 0.75rem;
-  color: var(--mf-graphite);
+  color: #1B1D22;
 }
 
 .ctaText {
   margin: 0 0 2rem;
-  color: var(--color-text-muted);
+  color: #666;
   font-weight: 300;
+}
+
+/* Graphite Wash Invite Card */
+.inviteCard {
+  width: 100%;
+  max-width: 480px;
+  background: rgba(20, 20, 22, 0.88);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  padding: 2.5rem 2.5rem;
+  color: #FAFAFA;
+}
+
+/* Gold micro-dot divider */
+.goldDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #D4A754;
+  margin: 2rem auto 0;
 }
 
 .ctaButton {
@@ -213,17 +238,29 @@
 
 .footer {
   text-align: center;
-  padding-top: 3rem;
-  margin-top: 3rem;
-  border-top: 1px solid var(--mf-fog);
+  padding: 3rem 1.5rem 4rem;
+  margin-top: 2rem;
 }
 
-.footerText {
-  font-size: 0.8rem;
-  color: var(--color-text-subtle);
+.footerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.footerCopyright {
+  font-size: 0.75rem;
+  color: #999;
+  letter-spacing: 0.04em;
   margin: 0;
-  font-weight: 300;
-  letter-spacing: 0.02em;
+}
+
+.footerSignature {
+  font-size: 0.75rem;
+  color: #aaa;
+  font-style: italic;
+  margin: 0;
 }
 
 /* Tablet breakpoint */
@@ -332,7 +369,7 @@
   }
 
   .ctaSection {
-    padding: 2rem 1.25rem 1.5rem;
+    padding: 2rem 1rem 1.5rem;
     margin-top: 2.5rem;
   }
 
@@ -345,13 +382,19 @@
     margin-bottom: 1.5rem;
   }
 
-  .footer {
-    padding: 2rem 1.25rem 2.5rem;
-    margin-top: 2rem;
+  .inviteCard {
+    padding: 1.75rem 1.5rem;
+    border-radius: 10px;
   }
 
-  .footerText {
-    font-size: 0.75rem;
+  .footer {
+    padding: 2rem 1.25rem 2.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .footerCopyright,
+  .footerSignature {
+    font-size: 0.7rem;
   }
 
   .testimonialsGrid {

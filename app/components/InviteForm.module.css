@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  max-width: 360px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -17,22 +17,22 @@
   font-size: 0.95rem;
   font-family: inherit;
   border: none;
-  border-bottom: 1px solid var(--mf-fog);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 0;
   background: transparent;
-  color: var(--mf-graphite);
+  color: #FAFAFA;
   transition: border-color 0.3s ease;
 }
 
 .input:focus,
 .textarea:focus {
   outline: none;
-  border-bottom-color: var(--mf-graphite);
+  border-bottom-color: #D4A754;
 }
 
 .input::placeholder,
 .textarea::placeholder {
-  color: var(--color-text-subtle);
+  color: rgba(255, 255, 255, 0.45);
   font-weight: 300;
 }
 
@@ -48,17 +48,19 @@
   font-family: inherit;
   letter-spacing: 0.02em;
   background: transparent;
-  color: #1B1D22;
+  color: #FAFAFA;
   border: 1px solid #D4A754;
-  border-radius: 2px;
+  border-radius: 3px;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
 .button:hover:not(:disabled) {
   background: #D4A754;
-  color: white;
+  color: #1B1D22;
+  box-shadow: 0 0 16px rgba(212, 167, 84, 0.4);
 }
 
 .button:disabled {
@@ -67,7 +69,7 @@
 }
 
 .error {
-  color: #c53030;
+  color: #ff6b6b;
   font-size: 0.85rem;
   margin: 0;
   text-align: center;
@@ -82,12 +84,12 @@
   font-size: 1.1rem;
   font-weight: 500;
   margin: 0 0 0.75rem;
-  color: var(--mf-graphite);
+  color: #FAFAFA;
 }
 
 .successNote {
   font-size: 0.875rem;
-  color: var(--color-text-subtle);
+  color: rgba(255, 255, 255, 0.6);
   margin: 0;
   font-weight: 300;
 }
