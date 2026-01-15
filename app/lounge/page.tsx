@@ -16,6 +16,7 @@ import {
   type ActivityItem,
   type LoungeStats,
 } from "./actions";
+import { hasFounderOverride } from "../../lib/auth/founder-override";
 
 type NavSection = "home" | "matches" | "circles" | "profile";
 
@@ -81,13 +82,16 @@ export default function LoungePage() {
 
       const passportData = await getPassportByEmail(user.email);
       
-      if (!passportData) {
+      // Founder override bypasses all access checks
+      const isFounder = hasFounderOverride(user.email);
+      
+      if (!passportData && !isFounder) {
         // No passport - redirect to onboarding
         window.location.href = "/onboarding";
         return;
       }
       
-      if (passportData.passport.status !== "active") {
+      if (passportData && passportData.passport.status !== "active" && !isFounder) {
         // Passport not active - redirect to onboarding
         window.location.href = "/onboarding";
         return;

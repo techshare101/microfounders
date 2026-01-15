@@ -4,7 +4,7 @@
 // =========================================================
 
 import { createClient } from "@supabase/supabase-js";
-import { CIRCLE_CONFIG } from "../matching/circle-rules";
+import { hasFounderOverride } from "../auth/founder-override";
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://xshyzyewarjrpabwpdpc.supabase.co";
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
@@ -180,6 +180,11 @@ export async function runTrustDecay(): Promise<TrustDecayResult> {
     
     for (const passport of (passports as PassportTrustData[]) || []) {
       result.passportsProcessed++;
+      
+      // Founder override - skip trust decay entirely
+      if (hasFounderOverride(passport.email)) {
+        continue;
+      }
       
       const daysInactive = daysSinceActivity(passport.last_active_at);
       

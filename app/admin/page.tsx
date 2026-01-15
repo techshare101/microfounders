@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabase/client";
 import { isAdminEmail } from "../../lib/auth/types";
+import { hasFounderOverride } from "../../lib/auth/founder-override";
 import { getInviteRequests, updateInviteStatus, createPassportFromInvite } from "./actions";
 import type { InviteRequest, InviteStatus, MembershipTier } from "../../lib/types/passport";
 import styles from "./admin.module.css";
@@ -36,7 +37,8 @@ export default function AdminDashboard() {
       return;
     }
     
-    if (!isAdminEmail(user.email)) {
+    // Founder override bypasses all access checks
+    if (!hasFounderOverride(user.email) && !isAdminEmail(user.email)) {
       window.location.href = "/lounge";
       return;
     }

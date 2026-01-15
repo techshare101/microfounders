@@ -16,6 +16,7 @@ import type {
   MembershipTier,
   IntentSignals,
 } from "../types/passport";
+import { hasFounderOverride } from "../auth/founder-override";
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://xshyzyewarjrpabwpdpc.supabase.co";
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
@@ -237,9 +238,12 @@ export async function runMatchGeneration(): Promise<MatchGenerationResult> {
     for (let i = 0; i < founders.length; i++) {
       const founder = founders[i];
 
-      // Check if this passport already has max pending matches
+      // Founder override - no match limits
+      const isFounder = hasFounderOverride(founder.passport.email);
+      
+      // Check if this passport already has max pending matches (founders bypass)
       const pendingCount = await getPendingMatchCount(founder.passport.id);
-      if (pendingCount >= MAX_PENDING_MATCHES) {
+      if (!isFounder && pendingCount >= MAX_PENDING_MATCHES) {
         continue;
       }
 
