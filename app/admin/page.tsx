@@ -16,6 +16,7 @@ export default function AdminDashboard() {
   const [reviewNotes, setReviewNotes] = useState("");
   const [tierAssigned, setTierAssigned] = useState<MembershipTier>("member");
   const [processing, setProcessing] = useState(false);
+  const [jobStatus, setJobStatus] = useState<string | null>(null);
 
   useEffect(() => {
     checkAuth();
@@ -104,6 +105,26 @@ export default function AdminDashboard() {
     });
   };
 
+  async function runJob(jobType: "matches" | "circles" | "trust") {
+    setJobStatus(`Running ${jobType} job...`);
+    try {
+      const res = await fetch(`/api/jobs/${jobType}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ secret: "admin-trigger" }),
+      });
+      const data = await res.json();
+      if (data.success !== false) {
+        setJobStatus(`${jobType} job complete: ${JSON.stringify(data)}`);
+      } else {
+        setJobStatus(`${jobType} job failed: ${data.errors?.join(", ") || "Unknown error"}`);
+      }
+    } catch (err) {
+      setJobStatus(`${jobType} job error: ${err instanceof Error ? err.message : "Unknown"}`);
+    }
+    setTimeout(() => setJobStatus(null), 5000);
+  }
+
   return (
     <div className={styles.dashboard}>
       <header className={styles.header}>
@@ -121,6 +142,20 @@ export default function AdminDashboard() {
             {status.charAt(0).toUpperCase() + status.slice(1)}
           </button>
         ))}
+      </div>
+
+      <div className={styles.jobControls}>
+        <span className={styles.jobLabel}>Run Jobs:</span>
+        <button className={styles.jobBtn} onClick={() => runJob("matches")}>
+          Generate Matches
+        </button>
+        <button className={styles.jobBtn} onClick={() => runJob("circles")}>
+          Rotate Circles
+        </button>
+        <button className={styles.jobBtn} onClick={() => runJob("trust")}>
+          Trust Decay
+        </button>
+        {jobStatus && <span className={styles.jobStatus}>{jobStatus}</span>}
       </div>
 
       <div className={styles.content}>

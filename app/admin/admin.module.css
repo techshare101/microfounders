@@ -318,3 +318,49 @@
 .declineBtn:hover:not(:disabled) {
   background: rgba(244, 67, 54, 0.25);
 }
+
+/* Job Controls */
+.jobControls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  flex-wrap: wrap;
+}
+
+.jobLabel {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+}
+
+.jobBtn {
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-family: inherit;
+  background: rgba(212, 167, 84, 0.15);
+  border: 1px solid rgba(212, 167, 84, 0.4);
+  border-radius: 6px;
+  color: #D4A754;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.jobBtn:hover {
+  background: rgba(212, 167, 84, 0.25);
+}
+
+.jobStatus {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-left: auto;
+  max-width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
